@@ -1,0 +1,8 @@
+services:
+  ical-proxy:
+    build: .
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      - PORT=${PORT}
+    restart: unless-stopped

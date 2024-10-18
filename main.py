@@ -2,9 +2,15 @@ from fastapi import FastAPI, Response, Request, HTTPException
 import httpx
 from ics_cleaner import modify_ics
 from urllib.parse import unquote, urlparse
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from pathlib import Path
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="static")
 
 ALLOWED_URL_SCHEMA = "https://www.fh-muenster.de:443/qisserver/pages/cm/exa/timetable/individualTimetableCalendarExport.faces"
 
@@ -21,9 +27,10 @@ def validate_url(url: str) -> bool:
     )
 
 
-@app.get("/")
-async def read_root():
-    return {"Hello": "World"}
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    home_html = Path("static/home.html").read_text()
+    return templates.TemplateResponse("home.html", {"request": request})
 
 
 @app.get("/{full_url:path}")

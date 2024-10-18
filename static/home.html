@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean FH Cal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        header {
+            padding: 0 1rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        nav {
+            margin-left: auto;
+        }
+
+        nav a {
+            margin-left: 1rem;
+            font-size: 0.875rem;
+            color: #000000;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        section {
+            padding: 3rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            color: #333333;
+        }
+
+        form {
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input[type="url"] {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #000000;
+            border-radius: 0.25rem 0 0 0.25rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            border-radius: 0 0.25rem 0.25rem 0;
+            cursor: pointer;
+        }
+
+        .features {
+            background-color: #f0f0f0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            border: 1px solid #000000;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .how-it-works .step {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .step-number {
+            width: 3rem;
+            height: 3rem;
+            background-color: #000000;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .what-we-clean {
+            background-color: #f9f9f9;
+            padding: 3rem 1rem;
+        }
+
+        .what-we-clean ul {
+            max-width: 800px;
+            margin: 2rem auto;
+            text-align: left;
+        }
+
+        .what-we-clean li {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            padding: 1.5rem 1rem;
+            border-top: 1px solid #000000;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: #333333;
+        }
+
+        footer nav {
+            margin-top: 0.5rem;
+        }
+
+        footer a {
+            font-size: 0.75rem;
+            color: #000000;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .how-it-works .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            footer nav {
+                margin-top: 0;
+            }
+        }
+    </style>
+<body>
+    <header>
+        <h1>Clean FH Cal</h1>
+        <nav>
+            <a href="#how-it-works">Funktionsweise</a>
+            <a href="#what-we-clean">Was wir bereinigen</a>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container text-center">
+                <h1>Vereinfachen Sie Ihren Universitätskalender</h1>
+                <p>Bereinigen Sie Ihren FH Münster-Kalender mit einem Klick. Erhalten Sie einen klareren Überblick über Ihren Zeitplan ohne Unordnung.</p>
+            </div>
+        </section>
+        <section id="features" class="features">
+            <div class="container">
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Vorher</h3>
+                            <img src="{{ url_for('static', path='original_calendar.png') }}" alt="Ursprünglicher unübersichtlicher Kalender">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <h3>Nachher</h3>
+                            <img src="{{ url_for('static', path='cleaned_calendar.png') }}" alt="Bereinigter und vereinfachter Kalender">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>    
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="text-center">Funktionsweise</h2>
+                <div class="grid">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Kopieren Sie Ihre iCal-URL</h3>
+                        <p>Kopieren Sie Ihre FH Münster iCal-URL aus dem Universitätssystem.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Fügen Sie diese URL voran</h3>
+                        <p>Fügen Sie diese Service-URL (https://clean-fh-cal.renja.dev/) vor Ihre iCal-URL.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Fügen Sie die neue URL in Ihren Kalender ein</h3>
+                        <p>Fügen Sie die neue URL in Ihren Kalender wie z.B. Google Kalender ein.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="what-we-clean" class="what-we-clean">
+            <div class="container">
+                <h2 class="text-center">Was wir bereinigen</h2>
+                <p class="text-center">Dieser Service wendet die folgenden Korrekturen an, um Ihren Kalender zu vereinfachen:</p>
+                <ul>
+                    <li><strong>Titelvereinfachung:</strong> Wir entfernen Präfixe aus Veranstaltungstiteln. Zum Beispiel wird aus "ETI.1.0214.0.V.1 Technische Grundlagen der Informatik" einfach "Technische Grundlagen der Informatik".</li>
+                    <li><strong>Übungsidentifikation:</strong> Wenn eine Veranstaltung eine Übung ist und diese Information nicht im Titel erwähnt wird, fügen wir sie hinzu, um es deutlich zu machen. Dies hilft Ihnen, schnell zu erkennen, welche Veranstaltungen Übungen sind.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <nav>
+            <a href="#how-it-works">Funktionsweise</a>
+            <a href="#what-we-clean">Was wir bereinigen</a>
+        </nav>
+    </footer>
+</body>
+</html>

@@ -14,7 +14,7 @@ def clean_description(description: str) -> str:
 def patch_clean_summary(component: Event) -> None:
     """Clean up the SUMMARY (get rid of the prefix)."""
     summary = component.get("summary", "")
-    pattern = r"^(?:ETI\.\d+\.\d+\.\d+\.V\.\d+\s+)?(.+)$"
+    pattern = r"^(?:[A-Z]{3}\.\d+\.\d+\.\d+\.V\.\d+\s+)?(.+)$"
     match = re.match(pattern, summary)
     if match:
         component["summary"] = match.group(1)
